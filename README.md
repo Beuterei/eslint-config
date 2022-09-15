@@ -36,15 +36,21 @@ npm i -D @beuluis/eslint-config
 
 ### Usage
 
-1. Create a `.eslintrc` file and pick one of the configs and paste it in.
+1. Install ESlint
+
+    ```bash
+    npm i -D eslint
+    ```
+
+2. Create a `.eslintrc` file and pick one of the configs and paste it in.
 
     ```bash
     touch .eslintrc
     ```
 
-2. Tweak the overrides to your used project structure. Also feel free to remove unused extends.
+3. Tweak the overrides to your used project structure. Also feel free to remove unused extends.
 
-3. Install [@beuluis/prettier-config](https://www.npmjs.com/package/@beuluis/prettier-config)
+4. Install [@beuluis/prettier-config](https://www.npmjs.com/package/@beuluis/prettier-config)
 
 > :warning: **Since this pack does not assume any particularly structure. It is necessary to configure the glob patterns according to your project structure.**
 

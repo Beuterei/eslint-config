@@ -11,7 +11,10 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "npm run lint && npm run format",
+    "lint": "eslint .",
+    "format": "prettier . --check",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -41,15 +44,28 @@
     "eslint": "^8"
   },
   "devDependencies": {
-    "@beuluis/prettier-config": "^2.0.0",
+    "@beuluis/hook-cli": "^1.1.2",
+    "@beuluis/prettier-config": "^2.0.1",
     "eslint": "^8",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "np": "^7.6.2",
     "prettier": "^2.6.2"
   },
   "prettier": "@beuluis/prettier-config",
   "keywords": [
     "eslint",
+    "eslint-config",
+    "eslint-shareable-config",
     "config",
     "linting"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,json}": [
+      "eslint"
+    ]
+  }
 }

@@ -44,6 +44,8 @@ npm i -D @beuluis/eslint-config
 
 2. Tweak the overrides to your used project structure. Also feel free to remove unused extends.
 
+3. Install [@beuluis/prettier-config](https://www.npmjs.com/package/@beuluis/prettier-config)
+
 > :warning: **Since this pack does not assume any particularly structure. It is necessary to configure the glob patterns according to your project structure.**
 
 ## Supported configs

@@ -46,5 +46,6 @@
     "np": "^7.6.2",
     "prettier": "^2.6.2"
   },
-  "prettier": "@beuluis/prettier-config"
+  "prettier": "@beuluis/prettier-config",
+  "keywords": ["eslint", "config", "linting"]
 }

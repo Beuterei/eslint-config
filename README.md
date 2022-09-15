@@ -307,9 +307,9 @@ Inside the files I try to keep this structure:
 
 ```json
 {
-    "rule1": "off", // first all rules that are turned off
-    "rule1": "warn", // first all rules that are configured with warn
-    "rule1": "error" // first all rules that are configured with error
+    "first_all_rules_that_are_turned_off": "off",
+    "first_all_rules_that_are_configured_with_warn": "warn",
+    "first_all_rules_that_are_configured_with_error": "error"
 }
 ```
 

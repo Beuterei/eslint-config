@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["canonical/browser", "plugin:compat/recommended", "plugin:prettier/recommended"]
+}

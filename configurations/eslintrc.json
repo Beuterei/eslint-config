@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": [
+    "canonical",
+    "canonical/prettier",
+    "plugin:@microsoft/sdl/common",
+    "plugin:anti-trojan-source/recommended",
+    "plugin:regexp/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "canonical/sort-keys": "off",
+    "import/extensions": "off"
+  }
+}

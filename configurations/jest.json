@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["canonical/jest", "plugin:jest-dom/recommended", "plugin:prettier/recommended"]
+}

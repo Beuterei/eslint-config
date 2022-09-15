@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["canonical/typescript", "plugin:prettier/recommended"],
+  "rules": {
+    "canonical/prefer-inline-type-import": "off",
+    "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
+  }
+}

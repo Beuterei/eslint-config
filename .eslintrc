@@ -1,0 +1,14 @@
+{
+    "extends": ["./eslintrc.js"],
+    "root": true,
+    "overrides": [
+        {
+            "extends": ["./node.js"],
+            "files": "*.js"
+        },
+        {
+            "extends": ["./json.js"],
+            "files": "*.json"
+        }
+    ]
+}

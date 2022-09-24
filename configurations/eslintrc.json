@@ -3,7 +3,6 @@
   "extends": [
     "canonical",
     "canonical/prettier",
-    "plugin:@microsoft/sdl/common",
     "plugin:anti-trojan-source/recommended",
     "plugin:regexp/recommended",
     "plugin:prettier/recommended"

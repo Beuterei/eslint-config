@@ -57,6 +57,7 @@ npm i -D @beuluis/eslint-config
 ## Supported configs
 
 -   [@beuluis/eslint-config](configurations/eslintrc.json) - The JSMDG code style guide
+-   [@beuluis/eslint-config/i18next](configurations/i18next.json) - For projects that use [i18next](https://www.i18next.com/).
 -   [@beuluis/eslint-config/browser](configurations/browser.json) - For projects that use DOM and other browser APIs.
 -   [@beuluis/eslint-config/node](configurations/node.json) - For projects using [node.js](https://nodejs.org/en/)
 -   [@beuluis/eslint-config/typescript](configurations/typescript.json) - For projects using [TypeScript](https://www.typescriptlang.org/)
@@ -204,7 +205,11 @@ npm i -D @beuluis/eslint-config
     "root": true,
     "overrides": [
         {
-            "extends": ["@beuluis/eslint-config/node", "@beuluis/eslint-config/browser"],
+            "extends": [
+                "@beuluis/eslint-config/node",
+                "@beuluis/eslint-config/browser",
+                "@beuluis/eslint-config/i18next"
+            ],
             "files": "*.{js,jsx}"
         },
         {
@@ -235,7 +240,11 @@ npm i -D @beuluis/eslint-config
     "root": true,
     "overrides": [
         {
-            "extends": ["@beuluis/eslint-config/typescript", "@beuluis/eslint-config/browser"],
+            "extends": [
+                "@beuluis/eslint-config/typescript",
+                "@beuluis/eslint-config/browser",
+                "@beuluis/eslint-config/i18next"
+            ],
             "files": "*.{ts,tsx}",
             "parserOptions": {
                 "project": "tsconfig.json"

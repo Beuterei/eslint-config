@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["plugin:i18next/recommended", "plugin:prettier/recommended"]
+}

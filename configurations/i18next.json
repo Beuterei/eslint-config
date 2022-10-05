@@ -1,4 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": ["plugin:i18next/recommended", "plugin:prettier/recommended"]
+  "extends": ["plugin:i18next/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "id-length": ["error", { "exceptions": ["t"] }]
+  }
 }

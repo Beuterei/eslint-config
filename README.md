@@ -81,7 +81,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         }
     ]
 }
@@ -104,7 +104,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         }
     ]
 }
@@ -127,7 +127,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
@@ -157,7 +157,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
@@ -187,7 +187,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
@@ -222,7 +222,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
@@ -260,7 +260,7 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.yaml"
+            "files": "*.{yml,yaml}"
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],

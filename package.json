@@ -66,5 +66,9 @@
     "*.{js,json}": [
       "eslint"
     ]
+  },
+  "np": {
+    "tests": false,
+    "publish": false
   }
 }

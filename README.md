@@ -131,7 +131,11 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
-            "files": ["*.{spec,test}.js", "**/{__mocks__,__tests__}/**/*.js", "**/jest.setup.js"]
+            "files": [
+                "*.?(component-){spec,test}.js",
+                "**/{__mocks__,__tests__}/**/*.js",
+                "**/jest.setup.js"
+            ]
         }
     ]
 }
@@ -161,7 +165,11 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
-            "files": ["*.{spec,test}.ts", "**/{__mocks__,__tests__}/**/*.ts", "**/jest.setup.ts"]
+            "files": [
+                "*.?(component-){spec,test}.ts",
+                "**/{__mocks__,__tests__}/**/*.ts",
+                "**/jest.setup.ts"
+            ]
         }
     ]
 }
@@ -191,7 +199,11 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
-            "files": ["*.{spec,test}.ts", "**/{__mocks__,__tests__}/**/*.ts", "**/jest.setup.ts"]
+            "files": [
+                "*.?(component-){spec,test}.ts",
+                "**/{__mocks__,__tests__}/**/*.ts",
+                "**/jest.setup.ts"
+            ]
         }
     ]
 }
@@ -226,7 +238,11 @@ npm i -D @beuluis/eslint-config
         },
         {
             "extends": ["@beuluis/eslint-config/jest"],
-            "files": ["*.{spec,test}.js", "**/{__mocks__,__tests__}/**/*.js", "**/jest.setup.js"]
+            "files": [
+                "*.?(component-){spec,test}.js",
+                "**/{__mocks__,__tests__}/**/*.js",
+                "**/jest.setup.js"
+            ]
         }
     ]
 }
@@ -265,7 +281,7 @@ npm i -D @beuluis/eslint-config
         {
             "extends": ["@beuluis/eslint-config/jest"],
             "files": [
-                "*.{spec,test}.{ts,tsx}",
+                "*.?(component-){spec,test}.{ts,tsx}",
                 "**/{__mocks__,__tests__}/**/*.{ts,tsx}",
                 "**/jest.setup.ts"
             ]

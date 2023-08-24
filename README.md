@@ -61,10 +61,15 @@ npm i -D @beuluis/eslint-config
 -   [@beuluis/eslint-config/browser](configurations/browser.json) - For projects that use DOM and other browser APIs.
 -   [@beuluis/eslint-config/node](configurations/node.json) - For projects using [node.js](https://nodejs.org/en/)
 -   [@beuluis/eslint-config/typescript](configurations/typescript.json) - For projects using [TypeScript](https://www.typescriptlang.org/)
+-   [@beuluis/eslint-config/typescript-no-type-checking](configurations/typescript-no-type-checking.json) - For projects using [TypeScript](https://www.typescriptlang.org/) and don't want additional rules that require type information (rules using type information take longer to run)
 -   [@beuluis/eslint-config/react](configurations/react.json) - For projects using [React](https://reactjs.org/)
 -   [@beuluis/eslint-config/json](configurations/json.json) - For projects using [JSON](https://www.json.org/)
 -   [@beuluis/eslint-config/yaml](configurations/yaml.json) - For projects using [YAML](https://yaml.org/)
 -   [@beuluis/eslint-config/jest](configurations/jest.json) - For projects using [Jest](https://jestjs.io/)
+-   [@beuluis/eslint-config/module](configurations/module.json) - For projects using ESM modules
+-   [@beuluis/eslint-config/next](configurations/next.json) - For projects using [Next.js](https://nextjs.org/)
+-   [@beuluis/eslint-config/Zod](configurations/Zod.json) - For projects using [Zod](https://zod.dev/)
+-   [@beuluis/eslint-config/prettier](configurations/prettier.json) - Applies [Prettier](https://prettier.io/) formatting
 
 ### Configs
 
@@ -141,6 +146,37 @@ npm i -D @beuluis/eslint-config
 }
 ```
 
+### Node & modules
+
+```json
+{
+    "extends": ["@beuluis/eslint-config"],
+    "root": true,
+    "overrides": [
+        {
+            "extends": ["@beuluis/eslint-config/node", "@beuluis/eslint-config/module"],
+            "files": "*.js"
+        },
+        {
+            "extends": ["@beuluis/eslint-config/json"],
+            "files": "*.json"
+        },
+        {
+            "extends": ["@beuluis/eslint-config/yaml"],
+            "files": "*.{yml,yaml}"
+        },
+        {
+            "extends": ["@beuluis/eslint-config/jest"],
+            "files": [
+                "*.?(component-){spec,test}.js",
+                "**/{__mocks__,__tests__}/**/*.js",
+                "**/jest.setup.js"
+            ]
+        }
+    ]
+}
+```
+
 ### TypeScript
 
 ```json
@@ -183,7 +219,10 @@ npm i -D @beuluis/eslint-config
     "root": true,
     "overrides": [
         {
-            "extends": ["@beuluis/eslint-config/typescript", "@beuluis/eslint-config/browser"],
+            "extends": [
+                "@beuluis/eslint-config/typescript",
+                "@beuluis/eslint-config/browser"
+            ],
             "files": "*.ts",
             "parserOptions": {
                 "project": "tsconfig.json"
@@ -298,6 +337,40 @@ However, one point is worth mentioning. You don't need to install plugins alread
 
 This means you only need to install plugins or configs if they are not provided by this pack.
 
+## `typescript` config vs. `typescript-no-type-checking` config
+
+I decided to do a opt out approach in favor of type safety. The `typescript` has the same rules enabled as the `typescript-no-type-checking` but enables some more rules that need deeper type checking. In general this is a good thing thats why it is enabled in the default `typescript` config but for some larger projects or projects with complex types this can be a performance issue.
+If you experience such performance issues you have two points to consider:
+
+- Refactor your complex types. Most of the time when eslint has trouble this is a hint that your types may not be well structure or can be optimized.
+- Turn off this feature by using the `typescript-no-type-checking` config instead of the `typescript` config
+
+## Migrating to version 2.X.X
+
+This version has prettier now build in and ignores prettier config files.
+
+So make sure that prettier is run only for files eslint can not parse if it should run at all.
+
+## Editorconfig
+
+```
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.json]
+indent_size = 2
+
+[*.{yaml,yml}]
+indent_size = 2
+```
+
 ## Development
 
 ### Note on canonical/node
@@ -316,7 +389,7 @@ So if you have a new technology/lib/etc. That need extra rules like react or jes
 
 ### Prettier integration
 
-In order to guarantee that [prettier formatting configurations](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration) take priority over specific linting implementations, i load it last in each linting configuration. Some plugins also provide those configs like [plugin:yml/prettier](https://github.com/ota-meshi/eslint-plugin-yml) and [plugin:jsonc/prettier ](https://github.com/ota-meshi/eslint-plugin-jsonc)
+See [Migrating to version 2.X.X](#migrating-to-version-2xx).
 
 ### Structure
 

@@ -3,6 +3,6 @@
   "extends": [
     "plugin:n/recommended",
     "plugin:security-node/recommended",
-    "plugin:prettier/recommended"
+    "@beuluis/eslint-config/prettier"
   ]
 }

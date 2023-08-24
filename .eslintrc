@@ -1,14 +1,18 @@
+// ESlint configuration for this package. Not to be used for other packs
 {
-    "extends": ["./eslintrc.js"],
+    "extends": ["canonical"],
     "root": true,
     "overrides": [
         {
-            "extends": ["./node.js"],
+            "extends": ["canonical/node"],
             "files": "*.js"
         },
         {
-            "extends": ["./json.js"],
-            "files": "*.json"
+            "extends": ["canonical/json", "plugin:jsonc/prettier"],
+            "files": "*.json",
+            "rules": {
+                "jsonc/sort-keys": "off"
+            }
         }
     ]
 }

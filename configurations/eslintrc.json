@@ -2,13 +2,45 @@
   "$schema": "https://json.schemastore.org/eslintrc",
   "extends": [
     "canonical",
-    "canonical/prettier",
+    "canonical/regexp",
     "plugin:anti-trojan-source/recommended",
-    "plugin:regexp/recommended",
-    "plugin:prettier/recommended"
+    "@beuluis/eslint-config/prettier"
   ],
   "rules": {
     "canonical/sort-keys": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-for-loop": "off",
+    "regexp/prefer-regexp-test": "warn",
+    "require-unicode-regexp": "off",
+    "regexp/require-unicode-regexp": "warn",
+    "id-length": [
+      "error",
+      {
+        "exceptions": ["_"]
+      }
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-void": ["error", { "allowAsStatement": true }],
+    "no-return-await": "error",
+    "regexp/no-super-linear-move": "error",
+    "regexp/no-control-character": "error",
+    "regexp/no-contradiction-with-assertion": "error",
+    "regexp/no-empty-character-class": "error",
+    "regexp/no-misleading-unicode-character": "error",
+    "regexp/no-octal": "error",
+    "regexp/no-standalone-backslash": "error",
+    "regexp/prefer-escape-replacement-dollar-char": "error",
+    "regexp/prefer-quantifier": "error",
+    "regexp/hexadecimal-escape": ["error", "always"],
+    "regexp/prefer-regexp-exec": "error",
+    "regexp/no-misleading-capturing-group": [
+      "error",
+      { "reportBacktrackingEnds": true }
+    ],
+    "regexp/no-missing-g-flag": ["error"],
+    "regexp/no-extra-lookaround-assertions": ["error"],
+    "no-implicit-coercion": ["error", { "allow": ["!!", "+", "*"] }],
+    "func-names": ["error", "as-needed"]
   }
 }

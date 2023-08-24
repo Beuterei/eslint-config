@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["canonical/prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 100,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "trailingComma": "all",
+        "arrowParens": "avoid"
+      },
+      {
+        "usePrettierrc": false
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": "*.json",
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "printWidth": 100,
+            "tabWidth": 2
+          },
+          {
+            "usePrettierrc": false
+          }
+        ]
+      }
+    },
+    {
+      "files": "*.{yaml,yml}",
+      "rules": {
+        "prettier/prettier": [
+          "error",
+          {
+            "printWidth": 100,
+            "tabWidth": 2
+          },
+          {
+            "usePrettierrc": false
+          }
+        ]
+      }
+    }
+  ]
+}

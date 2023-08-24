@@ -9,7 +9,8 @@ jobs:
   testing:
     uses: beuluis/reusable-workflows/.github/workflows/node-qa-testing.yml@main
     with:
-      skip_coverage_report: true
+      run_jest_coverage: false
+      build_command: npm publish --dry-run
     secrets: inherit
 
   publish-npm:

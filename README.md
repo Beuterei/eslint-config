@@ -351,6 +351,26 @@ This version has prettier now build in and ignores prettier config files.
 
 So make sure that prettier is run only for files eslint can not parse if it should run at all.
 
+## Editorconfig
+
+```
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.json]
+indent_size = 2
+
+[*.{yaml,yml}]
+indent_size = 2
+```
+
 ## Development
 
 ### Note on canonical/node

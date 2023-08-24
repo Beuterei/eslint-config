@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["canonical/module", "@beuluis/eslint-config/prettier"]
+}

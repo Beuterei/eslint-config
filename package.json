@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@beuluis/hook-cli": "1.2.1",
-    "eslint": "8.47.0",
+    "eslint": "8.48.0",
     "husky": "8.0.3",
     "lint-staged": "14.0.1"
   },

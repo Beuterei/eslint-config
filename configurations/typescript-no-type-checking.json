@@ -4,6 +4,7 @@
   "rules": {
     "canonical/prefer-inline-type-import": "off",
     "@typescript-eslint/unbound-method": "off",
+    "no-return-await": "off",
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
     "@typescript-eslint/member-ordering": [
       "error",

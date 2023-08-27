@@ -13,7 +13,7 @@ jobs:
   testing:
     permissions:
       pull-requests: write
-    uses: beuluis/reusable-workflows/.github/workflows/node-qa-testing.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-testing.yml@main
     with:
       run_jest_coverage: false
       build_command: npm publish --dry-run
@@ -23,7 +23,7 @@ jobs:
     needs: testing
     permissions:
       packages: write
-    uses: beuluis/reusable-workflows/.github/workflows/github-npm-publish.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/github-npm-publish.yml@main
     with:
       dist_tag: ${{ github.head_ref }}
     secrets: inherit

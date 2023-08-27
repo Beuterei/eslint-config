@@ -1,6 +1,6 @@
 {
   "name": "@beuluis/eslint-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Shared eslint config for my projects",
   "main": "./eslintrc.js",
   "files": [
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beuluis/eslint-config.git"
+    "url": "git+https://github.com/Beuterei/eslint-config.git"
   },
   "author": "Luis Beu <me@luisbeu.de> (https://luisbeu.de/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beuluis/eslint-config/issues"
+    "url": "https://github.com/Beuterei/eslint-config/issues"
   },
-  "homepage": "https://github.com/beuluis/eslint-config#readme",
+  "homepage": "https://github.com/Beuterei/eslint-config#readme",
   "dependencies": {
     "@rushstack/eslint-patch": "^1.3.3",
     "eslint-config-canonical": "^41.1.7",

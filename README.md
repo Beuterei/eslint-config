@@ -15,9 +15,9 @@
     <br />
     <br />
     ·
-    <a href="https://github.com/beuluis/eslint-config/issues">Report Bug</a>
+    <a href="https://github.com/Beuterei/eslint-config/issues">Report Bug</a>
     ·
-    <a href="https://github.com/beuluis/eslint-config/issues">Request Feature</a>
+    <a href="https://github.com/Beuterei/eslint-config/issues">Request Feature</a>
     ·
   </p>
 </p>
@@ -493,12 +493,12 @@ Luis Beu - me@luisbeu.de
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/beuluis/eslint-config.svg?style=flat-square
-[contributors-url]: https://github.com/beuluis/eslint-config/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/beuluis/eslint-config.svg?style=flat-square
-[forks-url]: https://github.com/beuluis/eslint-config/network/members
-[stars-shield]: https://img.shields.io/github/stars/beuluis/eslint-config.svg?style=flat-square
-[stars-url]: https://github.com/beuluis/eslint-config/stargazers
-[issues-shield]: https://img.shields.io/github/issues/beuluis/eslint-config.svg?style=flat-square
-[issues-url]: https://github.com/beuluis/eslint-config/issues
-[license-shield]: https://img.shields.io/github/license/beuluis/eslint-config.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/Beuterei/eslint-config.svg?style=flat-square
+[contributors-url]: https://github.com/Beuterei/eslint-config/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Beuterei/eslint-config.svg?style=flat-square
+[forks-url]: https://github.com/Beuterei/eslint-config/network/members
+[stars-shield]: https://img.shields.io/github/stars/Beuterei/eslint-config.svg?style=flat-square
+[stars-url]: https://github.com/Beuterei/eslint-config/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Beuterei/eslint-config.svg?style=flat-square
+[issues-url]: https://github.com/Beuterei/eslint-config/issues
+[license-shield]: https://img.shields.io/github/license/Beuterei/eslint-config.svg?style=flat-square

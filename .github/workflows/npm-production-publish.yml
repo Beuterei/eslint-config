@@ -7,7 +7,7 @@ on:
 
 jobs:
   testing:
-    uses: beuluis/reusable-workflows/.github/workflows/node-qa-testing.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-testing.yml@main
     with:
       run_jest_coverage: false
       build_command: npm publish --dry-run
@@ -15,5 +15,5 @@ jobs:
 
   publish-npm:
     needs: testing
-    uses: beuluis/reusable-workflows/.github/workflows/npm-publish.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/npm-publish.yml@main
     secrets: inherit

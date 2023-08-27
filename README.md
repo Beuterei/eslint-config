@@ -472,12 +472,6 @@ Rules should use the string value instead of the number to ensure easy reading:
 
     Example: [canonical](https://github.com/gajus/eslint-config-canonical/blob/master/configurations/eslintrc.js) already enables the `import` plugin. So no need to redefine it. You can just use it
 
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Follow [contributing](https://github.com/Good-Games-Munich/.github/wiki/workflows#contributing).
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 

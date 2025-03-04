@@ -1,5 +1,5 @@
-import canonicalJsxA11y from 'eslint-config-canonical/configurations/jsx-a11y';
-import canonicalReact from 'eslint-config-canonical/configurations/react';
+import canonicalJsxA11y from 'eslint-config-canonical/configurations/jsx-a11y.js';
+import canonicalReact from 'eslint-config-canonical/configurations/react.js';
 import pluginTestingLibrary from 'eslint-plugin-testing-library';
 import { config } from 'typescript-eslint';
 

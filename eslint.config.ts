@@ -16,6 +16,7 @@ export default config(
             'no-console': 'off',
             'perfectionist/sort-objects': 'off',
             'yml/sort-keys': 'off',
+            'import/extensions': 'off',
         },
     },
     {

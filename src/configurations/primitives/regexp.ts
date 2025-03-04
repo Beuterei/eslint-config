@@ -1,5 +1,5 @@
 import { baseFileMatcher } from './base';
-import canonicalRegexp from 'eslint-config-canonical/configurations/regexp';
+import canonicalRegexp from 'eslint-config-canonical/configurations/regexp.js';
 import { config } from 'typescript-eslint';
 
 export const regexp = config({

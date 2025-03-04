@@ -1,4 +1,4 @@
-import canonicalYaml from 'eslint-config-canonical/configurations/yaml';
+import canonicalYaml from 'eslint-config-canonical/configurations/yaml.js';
 import eslintPluginYml from 'eslint-plugin-yml';
 import { config } from 'typescript-eslint';
 

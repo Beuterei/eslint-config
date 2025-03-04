@@ -1,4 +1,4 @@
-import canonicalJson from 'eslint-config-canonical/configurations/json';
+import canonicalJson from 'eslint-config-canonical/configurations/json.js';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import { config } from 'typescript-eslint';
 

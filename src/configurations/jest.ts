@@ -1,4 +1,4 @@
-import canonicalJest from 'eslint-config-canonical/configurations/jest';
+import canonicalJest from 'eslint-config-canonical/configurations/jest.js';
 import pluginJestDom from 'eslint-plugin-jest-dom';
 import { config } from 'typescript-eslint';
 

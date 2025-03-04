@@ -1,4 +1,4 @@
-import canonicalTypescript from 'eslint-config-canonical/configurations/typescript';
+import canonicalTypescript from 'eslint-config-canonical/configurations/typescript.js';
 import { config } from 'typescript-eslint';
 
 export const typescriptNoTypeChecking = config(

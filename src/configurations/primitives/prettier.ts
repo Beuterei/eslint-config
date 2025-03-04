@@ -1,5 +1,5 @@
 import { baseFileMatcher } from './base';
-import canonicalPrettier from 'eslint-config-canonical/configurations/prettier';
+import canonicalPrettier from 'eslint-config-canonical/configurations/prettier.js';
 import { config } from 'typescript-eslint';
 
 export const prettier = config(

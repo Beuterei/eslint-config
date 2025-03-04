@@ -1,4 +1,4 @@
-import canonical from 'eslint-config-canonical/configurations/canonical';
+import canonical from 'eslint-config-canonical/configurations/canonical.js';
 import { config } from 'typescript-eslint';
 
 export const baseFileMatcher = ['**/*.{js,jsx,cjs,mjs,ts,tsx}'];

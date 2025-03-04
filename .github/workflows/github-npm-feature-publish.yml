@@ -20,7 +20,7 @@ jobs:
     needs: testing
     permissions:
       packages: write
-    uses: Beuterei/reusable-workflows/.github/workflows/github-npm-publish.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/github-package-publish.yml@main
     with:
       dist_tag: ${{ github.head_ref }}
       node_version: "22"

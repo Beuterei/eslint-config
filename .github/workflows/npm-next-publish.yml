@@ -16,7 +16,7 @@ jobs:
 
   publish-npm:
     needs: testing
-    uses: Beuterei/reusable-workflows/.github/workflows/npm-publish.yml@main
+    uses: Beuterei/reusable-workflows/.github/workflows/package-publish.yml@main
     with:
       node_version: "22"
       dist_tag: "next"

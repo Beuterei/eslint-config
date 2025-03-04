@@ -55,13 +55,13 @@
     "eslint": "^9"
   },
   "dependencies": {
-    "eslint-config-canonical": "44.3.43",
-    "eslint-plugin-compat": "6.0.2",
-    "eslint-plugin-jest-dom": "5.5.0",
-    "eslint-plugin-jsonc": "2.19.1",
-    "eslint-plugin-testing-library": "7.1.1",
-    "eslint-plugin-yml": "1.17.0",
-    "typescript-eslint": "8.26.0"
+    "eslint-config-canonical": "^44.3.43",
+    "eslint-plugin-compat": "^6.0.2",
+    "eslint-plugin-jest-dom": "^5.5.0",
+    "eslint-plugin-jsonc": "^2.19.1",
+    "eslint-plugin-testing-library": "^7.1.1",
+    "eslint-plugin-yml": "^1.17.0",
+    "typescript-eslint": "^8.26.0"
   },
   "devDependencies": {
     "@beuluis/hook-cli": "1.2.1",

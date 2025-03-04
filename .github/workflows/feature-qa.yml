@@ -1,4 +1,4 @@
-name: "Handling feature dist-tag with github registry"
+name: "Run quality assurance tests"
 
 on:
   pull_request:

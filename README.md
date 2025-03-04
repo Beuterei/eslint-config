@@ -22,6 +22,38 @@
   </p>
 </p>
 
+- [About The Project](#about-the-project)
+    - [Installation](#installation)
+- [Supported primitives configs](#supported-primitives-configs)
+    - [What are primitives?](#what-are-primitives)
+- [Supported configs](#supported-configs)
+- [Usage](#usage)
+    - [Cache](#cache)
+    - [Configs](#configs)
+    - [Browser](#browser)
+    - [Cypress](#cypress)
+    - [Jest with TypeScript](#jest-with-typescript)
+    - [Jest](#jest)
+    - [Modules](#modules)
+    - [Node](#node)
+    - [Vitest](#vitest)
+    - [Zod](#zod)
+- [VSCode](#vscode)
+    - [Autofix on save](#autofix-on-save)
+    - [EditorConfig](#editorconfig)
+- [Custom configs using primitives](#custom-configs-using-primitives)
+- [Usage without typescript-eslint](#usage-without-typescript-eslint)
+- [`typescript` config vs. `typescript-no-type-checking` config](#typescript-config-vs-typescript-no-type-checking-config)
+- [Migration to 3.0.0](#migration-to-300)
+- [Migration from other linter setups](#migration-from-other-linter-setups)
+- [Prettier](#prettier)
+- [Development](#development)
+    - [Structure](#structure)
+    - [Rule values](#rule-values)
+    - [Testing philosophy](#testing-philosophy)
+        - [Verbose logging](#verbose-logging)
+    - [Tips and tricks](#tips-and-tricks)
+
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
@@ -31,332 +63,318 @@ Shared eslint config for my projects. Utilizing [ESLint](https://eslint.org/).
 ### Installation
 
 ```bash
-npm i -D @beuluis/eslint-config
+npm i -D eslint@9 @beuluis/eslint-config typescript-eslint
 ```
 
-### Usage
+typescript-eslint is not required but recommended. See [Usage without typescript-eslint](#usage-without-typescript-eslint)
 
-1. Install ESlint
+## Supported primitives configs
 
-    ```bash
-    npm i -D eslint
-    ```
+- [base](src/configurations/primitives/base.ts) - The code style guide base. Needs to be loaded and loaded first.
+- [jsdoc](src/configurations/primitives/jsdoc.ts) - For projects using [JSDoc](https://jsdoc.app/)
+- [json](src/configurations/primitives/json.ts) - For projects using [JSON](https://www.json.org/)
+- [prettier](src/configurations/primitives/prettier.ts) - Applies [Prettier](https://prettier.io/) formatting
+- [react](src/configurations/primitives/react.ts) - For projects using [React](https://reactjs.org/)
+- [regexp](src/configurations/primitives/regexp.ts) - For projects that use regular expressions.
+- [typescript](src/configurations/primitives/typescript.ts) - For projects using [TypeScript](https://www.typescriptlang.org/)
+- [typescript-no-type-checking](src/configurations/primitives/typescript-no-type-checking.ts) - For projects using [TypeScript](https://www.typescriptlang.org/) and don't want additional rules that require type information (rules using type information take longer to run)
+- [yaml](src/configurations/primitives/yaml.ts) - For projects using [YAML](https://yaml.org/)
 
-2. Create a `.eslintrc` file and pick one of the configs and paste it in.
+### What are primitives?
 
-    ```bash
-    touch .eslintrc
-    ```
-
-3. Tweak the overrides to your used project structure. Also feel free to remove unused extends.
-
-4. Install [@beuluis/prettier-config](https://www.npmjs.com/package/@beuluis/prettier-config)
-
-> :warning: **Since this pack does not assume any particularly structure. It is necessary to configure the glob patterns according to your project structure.**
+Primitives are the basis for most language support. They match the file patterns and apply the rules for the respective language. As example the `typescript` primitive will apply rules only to `.ts` files and not to `.js` files.
 
 ## Supported configs
 
-- [@beuluis/eslint-config](configurations/eslintrc.json) - The JSMDG code style guide
-- [@beuluis/eslint-config/i18next](configurations/i18next.json) - For projects that use [i18next](https://www.i18next.com/).
-- [@beuluis/eslint-config/browser](configurations/browser.json) - For projects that use DOM and other browser APIs.
-- [@beuluis/eslint-config/node](configurations/node.json) - For projects using [node.js](https://nodejs.org/en/)
-- [@beuluis/eslint-config/typescript](configurations/typescript.json) - For projects using [TypeScript](https://www.typescriptlang.org/)
-- [@beuluis/eslint-config/typescript-no-type-checking](configurations/typescript-no-type-checking.json) - For projects using [TypeScript](https://www.typescriptlang.org/) and don't want additional rules that require type information (rules using type information take longer to run)
-- [@beuluis/eslint-config/react](configurations/react.json) - For projects using [React](https://reactjs.org/)
-- [@beuluis/eslint-config/json](configurations/json.json) - For projects using [JSON](https://www.json.org/)
-- [@beuluis/eslint-config/yaml](configurations/yaml.json) - For projects using [YAML](https://yaml.org/)
-- [@beuluis/eslint-config/jest](configurations/jest.json) - For projects using [Jest](https://jestjs.io/)
-- [@beuluis/eslint-config/module](configurations/module.json) - For projects using ESM modules
-- [@beuluis/eslint-config/next](configurations/next.json) - For projects using [Next.js](https://nextjs.org/)
-- [@beuluis/eslint-config/Zod](configurations/Zod.json) - For projects using [Zod](https://zod.dev/)
-- [@beuluis/eslint-config/prettier](configurations/prettier.json) - Applies [Prettier](https://prettier.io/) formatting
+- [browser](src/configurations/browser.ts) - For projects that use DOM and other browser APIs.
+- [cypress](src/configurations/cypress.ts) - For projects that use [Cypress](https://www.cypress.io/)
+- [jest](src/configurations/jest.ts) - For projects using [Jest](https://jestjs.io/)
+- [jestTs](src/configurations/jestTs.ts) - For projects using [Jest](https://jestjs.io/) with TypeScript
+- [module](src/configurations/module.ts) - For projects that use ESM modules.
+- [node](src/configurations/node.ts) - For projects using [node.js](https://nodejs.org/en/)
+- [vitest](src/configurations/vitest.ts) - For projects using [Vitest](https://vitest.dev/)
+- [zod](src/configurations/zod.ts) - For projects using [Zod](https://github.com/colinhacks/zod)
+
+## Usage
+
+For most projects the configuration can be automatched using the [auto](src/configurations/auto.ts) config. This can be archived with matching the file patterns of the primitives (See [What are primitives?](#what-are-primitives)).
+This includes the following configs:
+
+- base
+- typescript
+- regexp
+- react
+- jsdoc
+- json
+- yaml
+- prettier
+
+Create a `eslint.config.mjs` (or `.ts` see [TypeScript Configuration Files](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files)) file with the following content:
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto } from "@beuluis/eslint-config";
+
+export default config(auto, {
+    // For global ignores don't define other keys here. Adapt as needed.
+    ignores: ["**/dist/**", "**/node_modules/**"],
+});
+```
+
+Adapt the ignore patterns as needed based on [eslint ignore](https://eslint.org/docs/latest/use/configure/ignore).
+
+### Cache
+
+Utilizing the cache is highly recommended.
+
+See [eslint cache](https://eslint.org/docs/latest/use/command-line-interface#--cache)
 
 ### Configs
 
-### JavaScript
+Loading configs only for matching configs is important since it improves performance and ensures the correct rules are applied.
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        }
-    ]
-}
+See [config(...)](https://typescript-eslint.io/packages/typescript-eslint/#config)
+
+> :warning: **Since for other tooling the structure of your project is not assumed. It is necessary to configure the glob patterns according to your project structure. The provided examples are only for reference.**
+
+### Browser
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, browser } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: ["*.{js,mjs,cjs,jsx,tsx,ts}"],
+        extends: browser,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
 ```
 
-### JavaScript & Browser environment
+### Cypress
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": ["@beuluis/eslint-config/browser"],
-            "files": "*.js"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        }
-    ]
-}
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, cypress } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: ["**/cypress/**/*.{js,ts,jsx,tsx}", "**/cypress.config.{js,ts}"],
+        extends: cypress,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
+```
+
+### Jest with TypeScript
+
+Since some rules differ between jest and jest with typescript I have a dedicated config for it.
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, jestTs } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: [
+            "**/*.?(component-){spec,test}.{ts,tsx}",
+            "**/{__mocks__,__tests__}/**/*.{ts,tsx}",
+            "**/jest.setup.{ts}",
+        ],
+        extends: jestTs,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**"],
+    },
+);
+```
+
+### Jest
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, jest } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: [
+            "**/*.?(component-){spec,test}.{js,mjs,cjs,jsx}",
+            "**/{__mocks__,__tests__}/**/*.{js,mjs,cjs,jsx}",
+            "**/jest.setup.{js,mjs,cjs}",
+        ],
+        extends: jest,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**"],
+    },
+);
+```
+
+### Modules
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, module } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: ["**/*.{mjs,js}"],
+        extends: module,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
 ```
 
 ### Node
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": ["@beuluis/eslint-config/node"],
-            "files": "*.js"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.js",
-                "**/{__mocks__,__tests__}/**/*.js",
-                "**/jest.setup.js"
-            ]
-        }
-    ]
-}
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, node } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: ["**/*.{js,mjs,cjs}"],
+        extends: node,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
 ```
 
-### Node & modules
+### Vitest
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": [
-                "@beuluis/eslint-config/node",
-                "@beuluis/eslint-config/module"
-            ],
-            "files": "*.js"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.js",
-                "**/{__mocks__,__tests__}/**/*.js",
-                "**/jest.setup.js"
-            ]
-        }
-    ]
-}
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, vitest } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: [
+            "**/*.?(component-){spec,test}.{js,mjs,cjs,jsx}",
+            "**/{__mocks__,__tests__}/**/*.{js,mjs,cjs,jsx}",
+            "**/vitest.config.{js,mjs,cjs}",
+        ],
+        extends: vitest,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
 ```
 
-### TypeScript
+### Zod
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": ["@beuluis/eslint-config/typescript"],
-            "files": "*.ts",
-            "parserOptions": {
-                "project": "tsconfig.json"
-            }
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.ts",
-                "**/{__mocks__,__tests__}/**/*.ts",
-                "**/jest.setup.ts"
-            ]
-        }
-    ]
-}
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { auto, zod } from "@beuluis/eslint-config";
+
+export default config(
+    auto,
+    {
+        files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
+        extends: zod,
+    },
+    {
+        // For global ignores don't define other keys here. Adapt as needed.
+        ignores: ["**/dist/**", "**/node_modules/**"],
+    },
+);
 ```
 
-### TypeScript & Browser environment
+## VSCode
+
+Needs the official [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+Add the following to your `.vscode/settings.json` in your repository root (Alternatively you can add it to your global settings. Keep in mind this can have side effects). See [VSCode settings](https://code.visualstudio.com/docs/editor/settings):
 
 ```json
 {
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": [
-                "@beuluis/eslint-config/typescript",
-                "@beuluis/eslint-config/browser"
-            ],
-            "files": "*.ts",
-            "parserOptions": {
-                "project": "tsconfig.json"
-            }
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.ts",
-                "**/{__mocks__,__tests__}/**/*.ts",
-                "**/jest.setup.ts"
-            ]
-        }
-    ]
+    "eslint.useFlatConfig": true,
+    // Adapt this to your needs
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "json",
+        "typescript",
+        "typescriptreact",
+        "yaml"
+    ],
+    // Only needed for TS and not really related to eslint but one of the main problems I encountered. VSCode otherwise will use its build in typescript language server which may differ from the one you use in your project. This will result in false positives and false negatives.
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
 ```
 
-### React
+### Autofix on save
+
+Needs the official [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+Add this to your `settings.json` in vscode.
 
 ```json
 {
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": [
-                "@beuluis/eslint-config/node",
-                "@beuluis/eslint-config/browser",
-                "@beuluis/eslint-config/i18next"
-            ],
-            "files": "*.{js,jsx}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/react"],
-            "files": "*.jsx"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.js",
-                "**/{__mocks__,__tests__}/**/*.js",
-                "**/jest.setup.js"
-            ]
-        }
-    ]
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    // This could cause problems so try it out if you want but no guarantee.
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
 }
 ```
 
-### React & TypeScript
+### EditorConfig
 
-```json
-{
-    "extends": ["@beuluis/eslint-config"],
-    "root": true,
-    "overrides": [
-        {
-            "extends": [
-                "@beuluis/eslint-config/typescript",
-                "@beuluis/eslint-config/browser",
-                "@beuluis/eslint-config/i18next"
-            ],
-            "files": "*.{ts,tsx}",
-            "parserOptions": {
-                "project": "tsconfig.json"
-            }
-        },
-        {
-            "extends": ["@beuluis/eslint-config/react"],
-            "files": "*.tsx"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/json"],
-            "files": "*.json"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/yaml"],
-            "files": "*.{yml,yaml}"
-        },
-        {
-            "extends": ["@beuluis/eslint-config/jest"],
-            "files": [
-                "*.?(component-){spec,test}.{ts,tsx}",
-                "**/{__mocks__,__tests__}/**/*.{ts,tsx}",
-                "**/jest.setup.ts"
-            ]
-        }
-    ]
-}
-```
+Here is a EditorConfig to be used alongside this eslint config.
 
-## Extend config
-
-Your `.eslintrc` file can be extended and overridden as normal.
-
-However, one point is worth mentioning. You don't need to install plugins already listed in the [dependencies](package.json). (See [Tips and tricks](#Tips-and-tricks) for more info)
-
-This means you only need to install plugins or configs if they are not provided by this pack.
-
-## `typescript` config vs. `typescript-no-type-checking` config
-
-I decided to do a opt out approach in favor of type safety. The `typescript` has the same rules enabled as the `typescript-no-type-checking` but enables some more rules that need deeper type checking. In general this is a good thing thats why it is enabled in the default `typescript` config but for some larger projects or projects with complex types this can be a performance issue.
-If you experience such performance issues you have two points to consider:
-
-- Refactor your complex types. Most of the time when eslint has trouble this is a hint that your types may not be well structure or can be optimized.
-- Turn off this feature by using the `typescript-no-type-checking` config instead of the `typescript` config
-
-## Migrating to version 2.X.X
-
-This version has prettier now build in and ignores prettier config files.
-
-So make sure that prettier is run only for files eslint can not parse if it should run at all.
-
-## Editorconfig
-
-```
+```test
 root = true
 
 [*]
@@ -367,59 +385,131 @@ charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[*.json]
-indent_size = 2
-
-[*.{yaml,yml}]
+[*.{json,json5,jsonc,yml,yaml}]
 indent_size = 2
 ```
 
+## Custom configs using primitives
+
+If you do not want to use the auto config you can import all needed configs manually from the [primitives](src/primitives.ts) export.
+
+Keep in mind that the base config needs to be loaded and loaded first and ending with the prettier config.
+
+Keep in mind that this is basically the wild west of config dependencies and definitions. You can peak into the [configurations](configurations) folder to see how it works. Good luck cowboy!
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { base, yaml, prettier } from "@beuluis/eslint-config";
+
+export default config(base, yaml, prettier);
+```
+
+## Usage without typescript-eslint
+
+> :warning: **The name may suggest it is only for TS but it can be used for JS as well**
+
+The usage of typescript-eslint is optional. You can use the eslint config without it.
+
+But it offers a create set of utils to make your life a bit easier for merging configs and type safety.
+
+If you do not want to use it please see [apply config array](https://eslint.org/docs/latest/use/configure/combine-configs#apply-a-config-array)
+
+## `typescript` config vs. `typescript-no-type-checking` config
+
+I decided to do a opt out approach in favor of type safety. The `typescript` config extends the `typescript-no-type-checking` config with some more rules that need deeper type checking. In general this is a good thing thats why it is enabled in the default `typescript` config but for some larger projects or projects with complex types this can be a performance issue.
+If you experience such performance issues you have two points to consider:
+
+- Refactor your complex types. Most of the time when ESlint has trouble this is a hint that your types may not be well structure or can be optimized.
+- Turn off this feature by using the `typescript-no-type-checking` config instead of the `typescript` config
+- Alternatively, if you're using the `auto` config, you can use `autoNoTypeChecking` instead:
+
+```js
+// @ts-check
+
+import { config } from "typescript-eslint";
+
+import { autoNoTypeChecking } from "@beuluis/eslint-config";
+
+export default config(autoNoTypeChecking, {
+    // For global ignores don't define other keys here
+    ignores: ["**/dist/**", "**/node_modules/**"],
+});
+```
+
+## Migration to 3.0.0
+
+This version is basically a rewrite of the whole thing. It supports eslint v9 which enforces so called flat configs.
+
+But this also comes with way more flexibility and no worries the most heavy lifting is done in this package.
+
+1. Run `npm i -D eslint@9 @beuluis/eslint-config@latest typescript-eslint`
+
+2. Remove any old eslint configurations and ignore files. Those could be in `package.json` or in a separate config file.
+
+3. Create a new config file on the root of your project as described in the [usage](#usage) section. Don't forget to add the global ignores back from the old ignore file.
+
+4. Setup/Update the IDE integration.
+
+5. Run ESlint and check the output. You can run it with `--fix` to autofix most of the issues (Please verify the fixes. During migrations you will often encounter false positives just because the pure size of a codebase).
+
+6. Enjoy
+
+## Migration from other linter setups
+
+1. Remove all previous installed ESlint plugins and configs (This pack comes with all it needs). Keep only those not provides by this pack.
+
+2. Run `npm i -D eslint@9 @beuluis/eslint-config typescript-eslint`
+
+3. Use one of the [example configs](#Example-configurations) or build your own based on them
+
+4. Run ESlint and check the output. You can run it with `--fix` to autofix most of the issues (Please verify the fixes. During migrations you will often encounter false positives just because teh pure size of a codebase).
+
+5. Enjoy
+
+## Prettier
+
+Prettier is a great tool to provide common formatting for multiple file types across the codebase.
+The problem is that prettier acts dynamic based on the `.prettierrc` config present in the project.
+
+An example:
+
+Prettier gets defined with an indent with 2 spaces in the `.prettierrc` file.
+
+Now some eslint rule requires a indent of 4 spaces and now you have a conflict.
+
+So this package ignores the `.prettierrc` file and uses the one defined in this package using [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier).
+
 ## Development
-
-### Note on canonical/node
-
-It is not used due to its usage of the outdated [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node) pack. See [this](https://github.com/mysticatea/eslint-plugin-node/issues/300) issue on GitHub.
-
-It is replaced with [eslint-plugin-n](https://www.npmjs.com/package/eslint-plugin-n) instead.
-
-### How it works
-
-I make use of [@rushstack/eslint-patch/modern-module-resolution](https://www.npmjs.com/package/@rushstack/eslint-patch) to load all the packages defined in the `package.json`. In doing so the consuming package doesn't have to install them as peerDependency.
-
-All the rules get separated into fitting configurations. They can be later used alongside the base one.
-
-So if you have a new technology/lib/etc. That need extra rules like react or jest? -> create a new configuration in `configurations`.
-
-### Prettier integration
-
-See [Migrating to version 2.X.X](#migrating-to-version-2xx).
 
 ### Structure
 
-Configurations need to be reexported on root level to be found by ESlint.
-
-I use the subfolder `configurations` to define the configurations as JSON and make use of the [eslintrc schema](https://json.schemastore.org/eslintrc) for validation.
+I use the subfolder `configurations` to define the configurations.
 
 ```text
-.
+src
 ├── ...
 ├── configurations    # All configurations to be used
-│ ├── eslintrc.json   # Base configuration. Should apply for all languages to be tested by eslint
-│ ├── {{name}}.json   # Specialized configuration for languages, tools, libs, etc.
+│ ├── primitives      # Primitive configurations that serve as building blocks
+│ │ ├── base.ts       # Base configuration for all ESLint testing
+│ │ └── {{name}}.ts   # Other primitive configurations
+│ ├── {{name}}.ts     # Other specialized configurations (e.g. different testing libs etc)
 │ └── ...
-├── eslintrc.js       # Base configuration export. Also loads https://www.npmjs.com/package/@rushstack/eslint-patch
-├── {{name}}.js       # Specialized configuration export. Can also be used to log warnings for deprecation or throw errors for other infos about the used configuration.
+├── primitives.ts     # Primitive configuration export
+├── index.ts          # Other configuration export
 └── ...
 ```
 
 Inside the files I try to keep this structure:
 
-```json
-{
-    "first_all_rules_that_are_turned_off": "off",
-    "first_all_rules_that_are_configured_with_warn": "warn",
-    "first_all_rules_that_are_configured_with_error": "error"
-}
+```ts
+const rules = {
+    first_all_rules_that_are_turned_off: "off",
+    first_all_rules_that_are_configured_with_warn: "warn",
+    first_all_rules_that_are_configured_with_error: "error",
+};
 ```
 
 ### Rule values
@@ -432,48 +522,40 @@ Rules should use the string value instead of the number to ensure easy reading:
 
 - `"error"` instead of `2`
 
+### Testing philosophy
+
+Testing a eslint config is a bit tricky.
+
+There were two main concerns I wanted to cover with the testing strategy:
+
+1. The configs should be valid and be able to be loaded by eslint
+2. I manually typed some configs from dependency and they could change structure with updates.
+
+So I decided to actually try to initialize the configs with eslint lint a known bad file and see if I get the expected results.
+
+#### Verbose logging
+
+You can run the tests with `npm run test:verbose -- nest` to get verbose logging. This will log the results of the linting to the console.
+
 ### Tips and tricks
-
-- You see a error like `'module' is not defined` or other node global variables missing?
-
-    Add a `node` override for `.js` (often still needed in TS projects for config files or so):
-
-    ```json
-    {
-        "overrides": [
-            {
-                "extends": ["@beuluis/eslint-config/node"],
-                "files": ["*.js"]
-            }
-        ]
-    }
-    ```
 
 - One of the most confusing part is the override mechanism of eslint.
 
-    Some useful links for that are [extending-configuration-files](https://eslint.org/docs/latest/user-guide/configuring/configuration-files#extending-configuration-files) and [how-do-overrides-work](https://eslint.org/docs/latest/user-guide/configuring/configuration-files#how-do-overrides-work)
+    Some useful info can be found in [config(...)](https://typescript-eslint.io/packages/typescript-eslint/#config) and [combine-configs](https://eslint.org/docs/latest/use/configure/combine-configs)
 
-- Make sure to read the plugin documentations carefully. Most plugins recommended configs already enable all you need.
+- You can use [lint-staged](https://www.npmjs.com/package/lint-staged) to run linting on staged files. This is faster than running it for the whole project. (Remember that if you change something that might affect the linting results, e.g. a change to the eslint configuration, you should run linting for the whole project. This catches errors before GitLab CI).
 
-    Example: The [prettier recommended-configuration](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration) already expand to
+    Example:
 
     ```json
     {
-        "extends": ["prettier"],
-        "plugins": ["prettier"],
-        "rules": {
-            "prettier/prettier": "error",
-            "arrow-body-style": "off",
-            "prefer-arrow-callback": "off"
+        "lint-staged": {
+            "*.{ts,tsx,yaml,yml,json}": ["eslint"] // Adapt to project needs
         }
     }
     ```
 
-    so no need to redefine it.
-
-- Same goes for extended configs.
-
-    Example: [canonical](https://github.com/gajus/eslint-config-canonical/blob/master/configurations/eslintrc.js) already enables the `import` plugin. So no need to redefine it. You can just use it
+    And run it as git hook. For example with [husky](https://www.npmjs.com/package/husky) with `npx lint-staged --verbose`
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

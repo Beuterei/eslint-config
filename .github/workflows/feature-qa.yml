@@ -15,14 +15,3 @@ jobs:
       pull-requests: write
     uses: Beuterei/reusable-workflows/.github/workflows/node-qa-tests.yml@main
     secrets: inherit
-
-  publish-feature-tag:
-    needs: testing
-    permissions:
-      contents: read
-      packages: write
-    uses: Beuterei/reusable-workflows/.github/workflows/github-package-publish.yml@main
-    with:
-      dist_tag: ${{ github.head_ref }}
-      node_version: "22"
-    secrets: inherit

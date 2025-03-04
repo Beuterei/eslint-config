@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": ["plugin:i18next/recommended", "@beuluis/eslint-config/prettier"],
-  "rules": {
-    "id-length": ["error", { "exceptions": ["t"] }]
-  }
-}

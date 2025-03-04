@@ -1,9 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": [
-    "canonical/react",
-    "canonical/jsx-a11y",
-    "plugin:testing-library/react",
-    "@beuluis/eslint-config/prettier"
-  ]
-}

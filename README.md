@@ -56,20 +56,20 @@ npm i -D @beuluis/eslint-config
 
 ## Supported configs
 
--   [@beuluis/eslint-config](configurations/eslintrc.json) - The JSMDG code style guide
--   [@beuluis/eslint-config/i18next](configurations/i18next.json) - For projects that use [i18next](https://www.i18next.com/).
--   [@beuluis/eslint-config/browser](configurations/browser.json) - For projects that use DOM and other browser APIs.
--   [@beuluis/eslint-config/node](configurations/node.json) - For projects using [node.js](https://nodejs.org/en/)
--   [@beuluis/eslint-config/typescript](configurations/typescript.json) - For projects using [TypeScript](https://www.typescriptlang.org/)
--   [@beuluis/eslint-config/typescript-no-type-checking](configurations/typescript-no-type-checking.json) - For projects using [TypeScript](https://www.typescriptlang.org/) and don't want additional rules that require type information (rules using type information take longer to run)
--   [@beuluis/eslint-config/react](configurations/react.json) - For projects using [React](https://reactjs.org/)
--   [@beuluis/eslint-config/json](configurations/json.json) - For projects using [JSON](https://www.json.org/)
--   [@beuluis/eslint-config/yaml](configurations/yaml.json) - For projects using [YAML](https://yaml.org/)
--   [@beuluis/eslint-config/jest](configurations/jest.json) - For projects using [Jest](https://jestjs.io/)
--   [@beuluis/eslint-config/module](configurations/module.json) - For projects using ESM modules
--   [@beuluis/eslint-config/next](configurations/next.json) - For projects using [Next.js](https://nextjs.org/)
--   [@beuluis/eslint-config/Zod](configurations/Zod.json) - For projects using [Zod](https://zod.dev/)
--   [@beuluis/eslint-config/prettier](configurations/prettier.json) - Applies [Prettier](https://prettier.io/) formatting
+- [@beuluis/eslint-config](configurations/eslintrc.json) - The JSMDG code style guide
+- [@beuluis/eslint-config/i18next](configurations/i18next.json) - For projects that use [i18next](https://www.i18next.com/).
+- [@beuluis/eslint-config/browser](configurations/browser.json) - For projects that use DOM and other browser APIs.
+- [@beuluis/eslint-config/node](configurations/node.json) - For projects using [node.js](https://nodejs.org/en/)
+- [@beuluis/eslint-config/typescript](configurations/typescript.json) - For projects using [TypeScript](https://www.typescriptlang.org/)
+- [@beuluis/eslint-config/typescript-no-type-checking](configurations/typescript-no-type-checking.json) - For projects using [TypeScript](https://www.typescriptlang.org/) and don't want additional rules that require type information (rules using type information take longer to run)
+- [@beuluis/eslint-config/react](configurations/react.json) - For projects using [React](https://reactjs.org/)
+- [@beuluis/eslint-config/json](configurations/json.json) - For projects using [JSON](https://www.json.org/)
+- [@beuluis/eslint-config/yaml](configurations/yaml.json) - For projects using [YAML](https://yaml.org/)
+- [@beuluis/eslint-config/jest](configurations/jest.json) - For projects using [Jest](https://jestjs.io/)
+- [@beuluis/eslint-config/module](configurations/module.json) - For projects using ESM modules
+- [@beuluis/eslint-config/next](configurations/next.json) - For projects using [Next.js](https://nextjs.org/)
+- [@beuluis/eslint-config/Zod](configurations/Zod.json) - For projects using [Zod](https://zod.dev/)
+- [@beuluis/eslint-config/prettier](configurations/prettier.json) - Applies [Prettier](https://prettier.io/) formatting
 
 ### Configs
 
@@ -154,7 +154,10 @@ npm i -D @beuluis/eslint-config
     "root": true,
     "overrides": [
         {
-            "extends": ["@beuluis/eslint-config/node", "@beuluis/eslint-config/module"],
+            "extends": [
+                "@beuluis/eslint-config/node",
+                "@beuluis/eslint-config/module"
+            ],
             "files": "*.js"
         },
         {
@@ -423,15 +426,15 @@ Inside the files I try to keep this structure:
 
 Rules should use the string value instead of the number to ensure easy reading:
 
--   `"off"` instead of `0`
+- `"off"` instead of `0`
 
--   `"warn"` instead of `1`
+- `"warn"` instead of `1`
 
--   `"error"` instead of `2`
+- `"error"` instead of `2`
 
 ### Tips and tricks
 
--   You see a error like `'module' is not defined` or other node global variables missing?
+- You see a error like `'module' is not defined` or other node global variables missing?
 
     Add a `node` override for `.js` (often still needed in TS projects for config files or so):
 
@@ -446,11 +449,11 @@ Rules should use the string value instead of the number to ensure easy reading:
     }
     ```
 
--   One of the most confusing part is the override mechanism of eslint.
+- One of the most confusing part is the override mechanism of eslint.
 
     Some useful links for that are [extending-configuration-files](https://eslint.org/docs/latest/user-guide/configuring/configuration-files#extending-configuration-files) and [how-do-overrides-work](https://eslint.org/docs/latest/user-guide/configuring/configuration-files#how-do-overrides-work)
 
--   Make sure to read the plugin documentations carefully. Most plugins recommended configs already enable all you need.
+- Make sure to read the plugin documentations carefully. Most plugins recommended configs already enable all you need.
 
     Example: The [prettier recommended-configuration](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration) already expand to
 
@@ -468,7 +471,7 @@ Rules should use the string value instead of the number to ensure easy reading:
 
     so no need to redefine it.
 
--   Same goes for extended configs.
+- Same goes for extended configs.
 
     Example: [canonical](https://github.com/gajus/eslint-config-canonical/blob/master/configurations/eslintrc.js) already enables the `import` plugin. So no need to redefine it. You can just use it
 

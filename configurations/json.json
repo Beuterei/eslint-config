@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": ["canonical/json", "plugin:jsonc/prettier"],
-  "rules": {
-    "jsonc/sort-keys": "off"
-  }
-}

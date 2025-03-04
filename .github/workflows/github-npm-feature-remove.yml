@@ -1,4 +1,4 @@
-name: 'Handling feature dist-tag removal with github registry'
+name: "Handling feature dist-tag removal with github registry"
 
 on:
   pull_request:

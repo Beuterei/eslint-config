@@ -1,4 +1,4 @@
-name: 'Handling feature dist-tag with github registry'
+name: "Handling feature dist-tag with github registry"
 
 on:
   pull_request:
@@ -13,10 +13,7 @@ jobs:
   testing:
     permissions:
       pull-requests: write
-    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-testing.yml@main
-    with:
-      run_jest_coverage: false
-      build_command: npm publish --dry-run
+    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-tests.yml@main
     secrets: inherit
 
   publish-feature-tag:
@@ -26,4 +23,5 @@ jobs:
     uses: Beuterei/reusable-workflows/.github/workflows/github-npm-publish.yml@main
     with:
       dist_tag: ${{ github.head_ref }}
+      node_version: "22"
     secrets: inherit

@@ -1,6 +1,7 @@
-name: 'Publish pack with next dist-tag with npm registry'
+name: "Publish pack with next dist-tag with npm registry"
 
 on:
+  # eslint-disable-next-line yml/no-empty-mapping-value
   workflow_dispatch:
   push:
     branches:
@@ -9,16 +10,14 @@ on:
 jobs:
   testing:
     permissions:
-      contents: write
-    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-testing.yml@main
-    with:
-      run_jest_coverage: false
-      build_command: npm publish --dry-run
+      pull-requests: write
+    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-tests.yml@main
     secrets: inherit
 
   publish-npm:
     needs: testing
     uses: Beuterei/reusable-workflows/.github/workflows/npm-publish.yml@main
     with:
-      dist_tag: 'next'
+      node_version: "22"
+      dist_tag: "next"
     secrets: inherit

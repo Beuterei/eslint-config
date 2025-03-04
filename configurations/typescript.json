@@ -1,8 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": [
-    "@beuluis/eslint-config/typescript-no-type-checking",
-    "canonical/typescript-type-checking",
-    "@beuluis/eslint-config/prettier"
-  ]
-}

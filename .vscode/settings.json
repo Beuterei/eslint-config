@@ -1,0 +1,13 @@
+{
+  "eslint.options": { "flags": ["unstable_ts_config"] },
+  "eslint.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "typescript",
+    "typescriptreact",
+    "yaml"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

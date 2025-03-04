@@ -1,4 +1,4 @@
-name: 'Publish pack with latest dist-tag with npm registry'
+name: "Publish pack with latest dist-tag with npm registry"
 
 on:
   release:
@@ -7,13 +7,14 @@ on:
 
 jobs:
   testing:
-    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-testing.yml@main
-    with:
-      run_jest_coverage: false
-      build_command: npm publish --dry-run
+    permissions:
+      pull-requests: write
+    uses: Beuterei/reusable-workflows/.github/workflows/node-qa-tests.yml@main
     secrets: inherit
 
   publish-npm:
     needs: testing
     uses: Beuterei/reusable-workflows/.github/workflows/npm-publish.yml@main
+    with:
+      node_version: "22"
     secrets: inherit

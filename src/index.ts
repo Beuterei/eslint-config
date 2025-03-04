@@ -1,0 +1,10 @@
+export { auto } from './configurations/auto';
+export { autoNoTypeChecking } from './configurations/autoNoTypeChecking';
+export { browser } from './configurations/browser';
+export { cypress } from './configurations/cypress';
+export { jest } from './configurations/jest';
+export { jestTs } from './configurations/jestTs';
+export { module } from './configurations/module';
+export { node } from './configurations/node';
+export { vitest } from './configurations/vitest';
+export { zod } from './configurations/zod';
